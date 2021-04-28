@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class GameLauncher {
 
-    private GameLauncher() {}
+    public GameLauncher() {}
 
     public GameField launchField(int numberOfPlayers, int basicCardInHandNumber){
 
