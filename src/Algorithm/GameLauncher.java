@@ -66,7 +66,7 @@ public class GameLauncher {
         return basicField;
     }
 
-    private Image buildImageAddress(CardColor color, String type, String size){
+    private String buildImageAddress(CardColor color, String type, String size){
         String fileAddress = "./images/uno_assets_2d/PNGs/" + size + "/";
         CardType cardTypes = new CardType();
 
@@ -111,13 +111,7 @@ public class GameLauncher {
             return null;
         }
 
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage(fileAddress);
-
-        if(image == null)
-            System.out.println("This image address does not exists");
-
-        return image;
+        return fileAddress;
     }
 
 }

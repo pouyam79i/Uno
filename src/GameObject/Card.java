@@ -6,10 +6,10 @@ public class Card{
 
     private final String cardType;
     private final CardColor cardColor;
-    private final Image image;
-    private final Image imageHighQ;
+    private final String image;
+    private final String imageHighQ;
 
-    public Card(CardColor cardColor, String cardType, Image image, Image imageHighQ){
+    public Card(CardColor cardColor, String cardType, String image, String imageHighQ){
         this.cardColor = cardColor;
         this.cardType = cardType;
         this.image = image;
@@ -67,10 +67,10 @@ public class Card{
     public CardColor getCardColor() {
         return cardColor;
     }
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
-    public Image getImageHighQ(){
+    public String getImageHighQ(){
         return imageHighQ;
     }
 
