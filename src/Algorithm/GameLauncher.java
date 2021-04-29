@@ -4,6 +4,7 @@ import GameObject.Card;
 import GameObject.CardColor;
 import GameObject.CardType;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -28,13 +29,19 @@ public class GameLauncher {
 
         GameField basicField = new GameField(numberOfPlayers);
 
-        CardColor[] colors = {CardColor.Blue, CardColor.Green, CardColor.Red, CardColor.Black};
+        CardColor[] colors = {CardColor.Blue, CardColor.Green, CardColor.Red, CardColor.Yellow};
         CardType cardTypes = new CardType();
         ArrayList<Card> cardBox = new ArrayList<Card>();
 
         for(CardColor color : colors){
             for (String type : cardTypes.allCards){
-                Card newCard = new Card(color, type);
+                Card newCard = new Card(
+                        color,
+                        type,
+                        buildImageAddress(color, type, "small"),
+                        buildImageAddress(color, type, "large")
+                );
+
                 cardBox.add(newCard);
             }
         }
@@ -57,6 +64,60 @@ public class GameLauncher {
         basicField.setOutCards(cardBox);
 
         return basicField;
+    }
+
+    private Image buildImageAddress(CardColor color, String type, String size){
+        String fileAddress = "./images/uno_assets_2d/PNGs/" + size + "/";
+        CardType cardTypes = new CardType();
+
+        if(color == CardColor.Yellow)
+            fileAddress += "yellow_";
+        else if(color == CardColor.Blue)
+            fileAddress += "blue_";
+        else if(color == CardColor.Red)
+            fileAddress += "red_";
+        else if(color == CardColor.Green)
+            fileAddress += "green_";
+        else {
+            System.out.println("Cannot find address of image");
+            return null;
+        }
+
+        int typeInNumber = Integer.parseInt(type.split("#")[0]);
+
+        if(typeInNumber == 10)
+            fileAddress += "reverse";
+        else if(typeInNumber == 11)
+            fileAddress += "skip";
+        else if(typeInNumber == 12)
+            fileAddress += "picker";
+        else if(typeInNumber == 13)
+            fileAddress += "1";
+        else if(typeInNumber == 14)
+            fileAddress += "0";
+        else if(typeInNumber >= 2 && typeInNumber <= 9)
+            fileAddress += typeInNumber;
+        else {
+            System.out.println("Failed to make appropriate address style!");
+            return null;
+        }
+
+        if(size.equals("small"))
+            fileAddress += ".png";
+        else if(size.equals("large"))
+            fileAddress += "_large.png";
+        else{
+            System.out.println("wrong size input");
+            return null;
+        }
+
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image image = toolkit.getImage(fileAddress);
+
+        if(image == null)
+            System.out.println("This image address does not exists");
+
+        return image;
     }
 
 }

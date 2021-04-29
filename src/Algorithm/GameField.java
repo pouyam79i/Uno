@@ -113,6 +113,45 @@ public class GameField {
         return false;
     }
 
+    /**
+     * Returns the hands of player
+     * @param indexOfPlayer will be checked
+     * @return hands of player will be returned
+     */
+    public ArrayList<Card> getHandsOfPlayer(int indexOfPlayer){
+        if(indexOfPlayer >= 0 && indexOfPlayer < numberOfPlayers)
+            return playersCard.get(indexOfPlayer);
+        return null;
+    }
+
+    /**
+     * Sets a new hand of a player
+     * @param indexOfPlayer contains index of player
+     * @param newHandOdPlayer new hand will be set
+     * @return true if it could set new hand, else false
+     */
+    public boolean setHandOfPlayer(int indexOfPlayer, ArrayList<Card> newHandOdPlayer){
+        if(indexOfPlayer >= 0 && indexOfPlayer < numberOfPlayers){
+            playersCard.put(indexOfPlayer, newHandOdPlayer);
+            return true;
+        }
+        System.out.println("Cannot set new hand of player! wrong index of player!");
+        return false;
+    }
+
+    /**
+     * Checks for player with no cards left!
+     * @return true if it could find on empty hand
+     */
+    public boolean checkForEmptyHand(){
+        for(int index = 0; index < numberOfPlayers; index++){
+            ArrayList<Card> handOfPlayer = playersCard.get(index);
+            if(handOfPlayer.size() == 0)
+                return true;
+        }
+        return false;
+    }
+
     // Getters
     public int getNumberOfPlayers() {
         return numberOfPlayers;
