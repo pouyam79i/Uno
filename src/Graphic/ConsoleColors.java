@@ -1,6 +1,14 @@
 package Graphic;
 
-import GameObject.CardColor;
+/**
+ * The Uno game project
+ * this is an interface of uno game project
+ *
+ * contains all ansi values for console color!
+ *
+ * @author Pouya mohammadi - CE@AUT - Uni ID: 9829039
+ * @version 1.0
+ */
 
 public interface ConsoleColors {
 

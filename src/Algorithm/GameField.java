@@ -5,6 +5,13 @@ import GameObject.Card;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * The Uno game project
+ * this is a class of uno game project
+ * @author Pouya mohammadi - CE@AUT - Uni ID: 9829039
+ * @version 1.0
+ */
+
 public class GameField {
 
     /**
@@ -24,7 +31,11 @@ public class GameField {
      */
     private HashMap<Integer, ArrayList<Card>> playersCard;
 
-
+    /**
+     * Constructor of field
+     * Contains field information
+     * @param numberOfPlayers is the number of human + bots, or let's say all players
+     */
     public GameField(int numberOfPlayers){
         outCards = new ArrayList<Card>();
         inCards = new ArrayList<Card>();
@@ -32,6 +43,10 @@ public class GameField {
         this.numberOfPlayers = numberOfPlayers;
     }
 
+    /**
+     * Refresh in cards
+     * witch are show and played in previous moves
+     */
     public void refreshOutCard(){
         while (inCards.size() > 4){
             outCards.add(inCards.get(0));
@@ -168,10 +183,10 @@ public class GameField {
 
     // Setters
     public void setOutCards(ArrayList<Card> outCards) {
-        outCards = outCards;
+        this.outCards = outCards;
     }
     public void setInCards(ArrayList<Card> inCards) {
-        inCards = inCards;
+        this.inCards = inCards;
     }
     public void setPlayerCards(HashMap<Integer, ArrayList<Card>> playerCards) {
         this.playersCard = playerCards;

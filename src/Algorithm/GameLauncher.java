@@ -8,10 +8,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * The Uno game project
+ * this is a class of uno game project
+ * @author Pouya mohammadi - CE@AUT - Uni ID: 9829039
+ * @version 1.0
+ */
+
 public class GameLauncher {
 
+    /**
+     * Constructor of GameLauncher
+     */
     public GameLauncher() {}
 
+    /**
+     * build a new and raw field for new games + gives 7 number of cards to each player
+     * so that the game can be started
+     * @param numberOfPlayers number of players
+     * @param basicCardInHandNumber number of human players
+     * @return a new field for game
+     */
     public GameField launchField(int numberOfPlayers, int basicCardInHandNumber){
 
         // Limiting Number of players between 3 to 5
@@ -28,7 +45,7 @@ public class GameLauncher {
 
         GameField basicField = new GameField(numberOfPlayers);
 
-        CardColor[] colors = {CardColor.Blue, CardColor.Green, CardColor.Red, CardColor.Yellow};
+        CardColor[] colors = {CardColor.Blue, CardColor.Green, CardColor.Red, CardColor.Black};
         CardType cardTypes = new CardType();
         ArrayList<Card> cardBox = new ArrayList<Card>();
 
@@ -58,6 +75,5 @@ public class GameLauncher {
 
         return basicField;
     }
-
 
 }
