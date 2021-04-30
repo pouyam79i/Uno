@@ -3,23 +3,42 @@ package Algorithm;
 import GameObject.Card;
 import GameObject.CardColor;
 import GameObject.CardType;
+import Player.*;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class GameStream {
 
     private GameField field;
     private GameRules rules;
+    private ArrayList<Player> players;
     private int numberOfPlayers;
     private int indexOfCurrentPlayer;
     private int numberOfFiningCards;
 
-    public GameStream(int numberOfPlayers, int turningMode){
+    public GameStream(int numberOfPlayers, int turningMode, int numberOfHuman){
         this.numberOfPlayers = numberOfPlayers;
         GameLauncher gameLauncher = new GameLauncher();
         field = gameLauncher.launchField(numberOfPlayers, 7);
         rules = new GameRules(field, numberOfPlayers);
+        Scanner scanner = new Scanner(System.in);
+        int botCounter = 1;
+        for(int i = 0; i < numberOfPlayers; i++){
+            String name = "";
+            if(numberOfHuman > 0){
+                System.out.println("Please enter the name of human");
+                name = scanner.nextLine();
+                Player newPlayer = new Human(name, field.getHandsOfPlayer(i), i);
+                numberOfHuman--;
+            }
+            else {
+                name = "Bot " + botCounter;
+                Player newPlayer = new Human(name, field.getHandsOfPlayer(i), i);
+                botCounter++;
+            }
+        }
         Random rand = new Random();
         indexOfCurrentPlayer = rand.nextInt(numberOfPlayers);
         numberOfFiningCards = 0;

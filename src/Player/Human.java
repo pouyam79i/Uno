@@ -1,7 +1,6 @@
 package Player;
 
 import GameObject.Card;
-import GameObject.CardColor;
 import Graphic.ConsoleColors;
 
 import java.util.ArrayList;
@@ -34,6 +33,8 @@ public class Human extends Player implements ConsoleColors{
             System.out.println(RED + "Wrong index of card");
             return false;
         }
+        if(lastInCard == null)
+            return true;
         if(!getCards().get(index).equalsColor(lastInCard)){
             if(!getCards().get(index).equalsType(lastInCard)){
                 if(getCards().get(index).getCardType().equals("12#12"))

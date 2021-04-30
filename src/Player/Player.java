@@ -1,7 +1,6 @@
 package Player;
 
 import GameObject.Card;
-import GameObject.CardColor;
 
 import java.util.ArrayList;
 
@@ -23,6 +22,8 @@ public abstract class Player {
 
     public void updateScore(){
         currentScore = 0;
+        if(cards == null)
+            return;
         for (Card card : cards){
             currentScore += card.cardScore();
         }
