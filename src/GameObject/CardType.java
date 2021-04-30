@@ -1,6 +1,6 @@
 package GameObject;
 
-public class CardType {
+public class CardType{
 
     // CardNumber#CardScore
     public final String N2 = "2#2";        // Card 2

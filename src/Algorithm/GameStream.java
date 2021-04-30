@@ -134,6 +134,26 @@ public class GameStream {
         return Operation.done;
     }
 
+    public boolean checkIfHandIsAvailable(int indexOfCurrentPlayer){
+        field = getField();
+        ArrayList<Card> handOfPlayer = field.getHandsOfPlayer(indexOfCurrentPlayer);
+        CardColor colorOfField;
+        String lastTypeOfCard;
+        if(field.getInCards().size() == 0)
+            return true;
+        else{
+            colorOfField = rules.getColorOfField();
+            lastTypeOfCard = rules.getLastType();
+        }
+        for(Card card : handOfPlayer){
+            if(card.getCardColor() == colorOfField)
+                return true;
+            if(card.getCardType().equals(lastTypeOfCard))
+                return true;
+        }
+        return false;
+    }
+
     // Getters
     public GameField getField() {
         field = rules.getField();

@@ -1,19 +1,13 @@
 package GameObject;
 
-import java.awt.*;
-
 public class Card{
 
     private final String cardType;
     private final CardColor cardColor;
-    private final String image;
-    private final String imageHighQ;
 
-    public Card(CardColor cardColor, String cardType, String image, String imageHighQ){
+    public Card(CardColor cardColor, String cardType){
         this.cardColor = cardColor;
         this.cardType = cardType;
-        this.image = image;
-        this.imageHighQ = imageHighQ;
     }
 
     public int cardScore() {
@@ -60,18 +54,28 @@ public class Card{
         return output;
     }
 
+    public String getCardSign(){
+        String output = "";
+        int typeNumber = Integer.parseInt(cardType.split("#")[0]);
+        if(typeNumber < 11)
+            output += typeNumber;
+        else if(typeNumber == 11)
+            output = "A";
+        else if(typeNumber == 12)
+            output = "B";
+        else if(typeNumber == 13)
+            output = "C";
+        else if(typeNumber == 14)
+            output = "D";
+        return output;
+    }
+
     // Getter
     public String getCardType() {
         return cardType;
     }
     public CardColor getCardColor() {
         return cardColor;
-    }
-    public String getImage() {
-        return image;
-    }
-    public String getImageHighQ(){
-        return imageHighQ;
     }
 
 }
