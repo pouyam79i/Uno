@@ -10,6 +10,7 @@ public class Human extends Player implements ConsoleColors{
 
     public Human(String name, ArrayList<Card> cards, int playerIndex){
         super(name, cards, playerIndex);
+        setIdentity(Identity.Human);
     }
 
     @Override

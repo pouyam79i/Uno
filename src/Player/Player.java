@@ -10,11 +10,14 @@ public abstract class Player {
     private final int playerIndex;
     private ArrayList<Card> cards;
     private int currentScore;
+    private Identity identity;
+
 
     public Player(String name, ArrayList<Card> cards, int playerIndex){
         this.name = name;
         this.cards = cards;
         this.playerIndex = playerIndex;
+        identity = Identity.Player;
         updateScore();
     }
 
@@ -33,6 +36,11 @@ public abstract class Player {
         updateScore();
     }
 
+    // Setter
+    public void setIdentity(Identity identity) {
+        this.identity = identity;
+    }
+
     // Getters
     public String getName() {
         return name;
@@ -47,5 +55,7 @@ public abstract class Player {
     public int getPlayerIndex() {
         return playerIndex;
     }
-
+    public Identity getIdentity() {
+        return identity;
+    }
 }
