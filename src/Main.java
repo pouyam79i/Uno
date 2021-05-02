@@ -110,7 +110,9 @@ public class Main implements ConsoleColors {
                     if(results.size() == 0)
                         System.out.println(RED_BOLD + "\n No Match");
                     else {
+                        int index = 0;
                         for (MatchResult matchResult : results) {
+                            System.out.println(BLUE_BOLD + "\n Match " + RED_BOLD + index + RESET);
                             System.out.println(matchResult.toString());
                         }
                     }
