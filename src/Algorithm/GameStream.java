@@ -93,6 +93,7 @@ public class GameStream implements ConsoleColors {
         Random rand = new Random();
         indexOfCurrentPlayer = rand.nextInt(numberOfPlayers);
         numberOfFiningCards = 0;
+        console.printLauncherInformation(players, indexOfCurrentPlayer ,turningMode);
     }
 
     /**
@@ -102,7 +103,8 @@ public class GameStream implements ConsoleColors {
     public boolean stream(){
         boolean playerIsFined = false;
 
-        console.printField(rules.getField(), indexOfCurrentPlayer);
+        if(players.get(indexOfCurrentPlayer).getIdentity() != Identity.Bot)
+            console.printField(rules.getField(), indexOfCurrentPlayer);
 
         if(rules.getField().getInCards().size() != 0){
             if(!checkIfHandIsAvailable(indexOfCurrentPlayer)){
@@ -111,10 +113,13 @@ public class GameStream implements ConsoleColors {
             }
         }
 
+        players.get(indexOfCurrentPlayer).updateCards(rules.getField().getHandsOfPlayer(indexOfCurrentPlayer));
         Card playedCard = players.get(indexOfCurrentPlayer).moveCard(rules.getLastType(), rules.getColorOfField(), playerIsFined);
         if(playedCard != null){
             streamOperation =  doOneTurn(indexOfCurrentPlayer, playedCard);
             while (streamOperation == Operation.ruleCardN8){
+                if(players.get(indexOfCurrentPlayer).getIdentity() != Identity.Bot)
+                    console.printField(rules.getField(), indexOfCurrentPlayer);
                 players.get(indexOfCurrentPlayer).updateCards(rules.getField().getHandsOfPlayer(indexOfCurrentPlayer));
                 playedCard = players.get(indexOfCurrentPlayer).moveCard(rules.getLastType(), rules.getColorOfField(), true);
                 streamOperation = doOneTurn(indexOfCurrentPlayer, playedCard);
@@ -306,10 +311,11 @@ public class GameStream implements ConsoleColors {
             if(rules.getField().getHandsOfPlayer(indexOfCurrentPlayer).size() == 0){
                 rules.finePlayer(indexOfCurrentPlayer);
                 field = getField();
-                return Operation.ruleCardN8;
+                this.indexOfCurrentPlayer = rules.turnPlayer(indexOfCurrentPlayer);
+                return Operation.done;
             }
             // Do not want to change index of player because of rule card N8!
-            return Operation.done;
+            return Operation.ruleCardN8;
         }
 
         // Rule card N10

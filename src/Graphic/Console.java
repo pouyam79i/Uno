@@ -3,6 +3,7 @@ package Graphic;
 import Algorithm.GameField;
 import GameObject.Card;
 import GameObject.CardColor;
+import Player.Player;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,41 @@ public class Console implements ConsoleColors{
      * Constructor of Console
      */
     public Console(){}
+
+    /**
+     * Prints the game information before starting the game
+     * So then the players know what is going to happen when the game is started!
+     * @param players list of players
+     * @param turningMode turning mode of game
+     */
+    public void printLauncherInformation(ArrayList<Player> players, int indexOfGameStarter ,int turningMode){
+        if(players == null){
+            System.out.println(RED_BOLD + "No player!");
+            return;
+        }
+        int numberOfPlayers = players.size();
+        System.out.println(PURPLE_BOLD + " ── Game Information ──\n");
+        if(numberOfPlayers == 3){
+            // ⋰ \u22F0
+            // \u21BB
+            System.out.println(RED_BOLD + "           P0");
+            if(turningMode > 0)
+                System.out.println(PURPLE_BOLD + "        \u22F0  \u21BB  \u22F1");
+            else
+                System.out.println(PURPLE_BOLD + "        \u22F0  \u21BA  \u22F0");
+            System.out.println(BLUE_BOLD + "     P2" + PURPLE_BOLD + "    \u22EF" + YELLOW_BOLD + "    p3");
+        }
+
+        System.out.println(PURPLE_BOLD + "\n ── Players Place ──");
+        for(int index = 0; index < players.size(); index++) {
+            if(index == indexOfGameStarter)
+                System.out.println(YELLOW_BOLD +  "* Starter * " + RED_BOLD + "P" + index + BLUE_BOLD + " - " + GREEN_BOLD + players.get(index).getName());
+            else
+                System.out.println(RED_BOLD + "P" + index + BLUE_BOLD + " - " + GREEN_BOLD + players.get(index).getName());
+
+        }
+        System.out.println( YELLOW_BOLD + "\n  The game is started!\n ");
+    }
 
     /**
      * Print the field of game
