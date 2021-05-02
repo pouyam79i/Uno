@@ -24,7 +24,7 @@ Card number 10: this one changes the direction of game!<br>
 Card A: this one skip one player and goes to the next player!<br>
 Card B: this card always can be used by the player! plus it let the player to pick a color for the next round!<br>
 </p>
-<h4>Rules of ground</h4>
+<h3>Rules of ground</h3>
 <p>
 1 - If there is no card, the starter player can put any card!<br>
 2 - If there is a card on the ground, next player must put a card that matches the color of groun (be careful that card B can pick another color which not matches its color) or the card must have the save number of previous card!<br>
@@ -36,19 +36,20 @@ Card B: this card always can be used by the player! plus it let the player to pi
 Well, Each program must have a interface, so mine is not a exception :)<br>
 I am going to tell you about each picture!<br>
 </p>
-
-<div>
-<img src="./screenshots/Screenshot%20(293).png">
-</div><br>
-
+<br>
+<h4>This is the interface of start and also you can see what is in setting menu!</h4>
 <div>
 <img src="./screenshots/Screenshot%20(294).png">
 </div><br>
-
+<h4>This is the game starting interface!</h4>
+<div>
+<img src="./screenshots/Screenshot%20(293).png">
+</div><br>
+<h4>This is the interface of game and cards!</h4>
 <div>
 <img src="./screenshots/Screenshot%20(299).png">
 </div><br>
-
+<h4>This is the end game. in which the winner and scores are shown!</h4>
 <div>
 <img src="./screenshots/Screenshot%20(300).png">
 </div><br>
