@@ -37,11 +37,11 @@ Well, Each program must have a interface, so mine is not a exception :)<br>
 I am going to tell you about each picture!<br>
 </p>
 <br>
-<h4>This is the interface of start and also you can see what is in setting menu!</h4>
+<h4>This is the interface of main menu and also you can see what is in setting menu!</h4>
 <div>
 <img src="./screenshots/Screenshot%20(294).png">
 </div><br>
-<h4>This is the game starting interface!</h4>
+<h4>This is the interface of game starting and you can see some information!</h4>
 <div>
 <img src="./screenshots/Screenshot%20(293).png">
 </div><br>
@@ -53,4 +53,6 @@ I am going to tell you about each picture!<br>
 <div>
 <img src="./screenshots/Screenshot%20(300).png">
 </div><br>
-
+<h4>Also there is a menu called score! you can see previous matches result</h4>
+<br>
+<h5>Coded by Pouya Mohammadi :)</h5>
